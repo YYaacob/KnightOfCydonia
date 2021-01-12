@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     public float jumpingHeight;
     private Rigidbody2D rigidbody2D;
     private Animator animator;
+
+    public GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,10 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
 
+        }
+        if(collision.gameObject.tag == "Obstacle")
+        {
+            gameManager.gameOver = true;
         }
     }
 }
